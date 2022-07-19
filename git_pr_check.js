@@ -1,18 +1,14 @@
-// var Pull_request_Summary=process.argv[2];
-// var Pull_request_Description=process.argv[3];
-// var Pull_request_Commit_Message=process.argv[4];
-// var Pull_request_Long_Description=process.argv[5];
 var Pull_request_Summary=process.argv[2];
 var Pull_request_Commit_Message=process.argv[3];
 var Pull_request_Long_Description=process.argv[4];
 var regex = RegExp('^([Dd][Ee][Vv][Oo][Pp][Ss])|^([Dd][Oo][Pp][Ss])|^([Dd][Ee][Vv])|^([Ss][Rr][Ee])-[0-9]+');
 var check,checkarray=[];
 git_summary_devops = function() {
-    //Check1: Summary Line should start with JIRA Number Format(ex: devops-160, sre-1234)
+    //Check1: Summary Line should start with JIRA Number Format(ex: devops-160, sre-1234, dops-1224, dev-1234)
      if (regex.test(Pull_request_Summary).toString() == "true"){
-          console.log("Success: Summary_Line starts with JIRA Number Format ex: (devops-123, sre-1234)");
+          console.log("Success: Summary_Line starts with JIRA Number Format ex: (ex: devops-160, sre-1234, dops-1224, dev-1234)");
       } else {
-          console.log("Error: Summary_Line should start with JIRA Number Format ex: (devops-123, sre-1234)");
+          console.log("Error: Summary_Line should start with JIRA Number Format ex: (ex: devops-160, sre-1234, dops-1224, dev-1234)");
           check="true";
           checkarray.push(check);
      }
@@ -29,23 +25,6 @@ git_summary_length = function() {
       checkarray.push(check);
     }
 };
-
-// git_description_length = function() {
-// 	//Check3: Each line in description should be less than or equal to 72 characters
-//     var str=Pull_request_Description.replace(/(?:\\[rn])+/g, ",");
-//     var arr = str.split(',');
-//     for(var i=0;i<arr.length;i++)
-//     {
-//         if(arr[i].length < 72)
-//         {
-//             console.log("Success: Descrition_Line_No:"+i+" is less than max character length");
-//         }else {
-//             console.log("Error: Descrition_Line_No:"+i+" had exceeded max 72 characters of length");
-//             check="true";
-//             checkarray.push(check);
-//         }
-//     }
-// };
 
 git_check_error = function() {
 	//Check5: check if encountered any error status
@@ -73,7 +52,6 @@ git_long_description = function() {
 
 git_summary_devops();
 git_summary_length();
-// git_description_length();
 git_long_description();
 git_check_error();
 /*
