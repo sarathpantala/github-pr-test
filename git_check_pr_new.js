@@ -38,6 +38,5 @@ git_long_description = function() {
 };
 
 git_summary_devops();
-git_summary_length();
 git_long_description();
 git_check_error();
