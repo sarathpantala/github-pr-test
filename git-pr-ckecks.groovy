@@ -1,4 +1,7 @@
   pipeline {
+  parameters {
+          string(defaultValue: "", description: 'git_branch', name: 'git_branch');        
+  }
     agent any
   stages {
          stage('Pr-checks-analyzer') {
