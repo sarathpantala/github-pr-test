@@ -6,28 +6,40 @@ var check,checkarray=[];
 git_summary_devops = function() {
     //Check1: Summary Line should start with JIRA Number Format(ex: devops-160, sre-1234, dops-1224, dev-1234)
      if (regex.test(Pull_request_Summary).toString() == "true"){
-          console.log("Success: Summary_Line starts with JIRA Number Format ex: (ex: devops-160, sre-1234, dops-1224, dev-1234)");
+          console.log("Success: Summary Line starts with JIRA Number Format ex: (ex: devops-160, sre-1234, dops-1224, dev-1234)");
       } else {
-          console.log("Error: Summary_Line should start with JIRA Number Format ex: (ex: devops-160, sre-1234, dops-1224, dev-1234)");
+          console.log("Error: Summary Line should start with JIRA Number Format ex: (ex: devops-160, sre-1234, dops-1224, dev-1234)");
           check="true";
           checkarray.push(check);
      }
 };
 
 git_summary_length = function() {
-	//Check2: Summary Line should be less than or equal to 50 characters
-    if (Pull_request_Summary.length < 50)
+	//Check2: Summary Line should be less than or equal to 30 characters
+    if (Pull_request_Summary.length < 30)
     {
         console.log("Success: Summary_Line is less than max character length size");
     }else {
-      console.log("Error: Summary_Line had exceeded max 50 characters of length");
+      console.log("Error: Summary_Line had exceeded max 30 characters of length");
       check="true";
       checkarray.push(check);
     }
 };
 
+git_long_description = function() {
+    Pull_request_Long_Description = Pull_request_Long_Description.toString();
+     //Check3: Long Description should be more than 100 characters
+    if (Pull_request_Long_Description.length > 100) {
+        console.log("Success: Long Description is more than min 100 character length");
+    }
+    else {
+      console.log("Error: Long Description is less than min 100 characters of length");
+      check="true";
+      checkarray.push(check);
+    }
+};
 git_check_error = function() {
-	//Check5: check if encountered any error status
+	//Check4: check if encountered any error status
     if(checkarray.indexOf('true') > -1)
     {
         console.log("Status check errors present");
@@ -37,25 +49,7 @@ git_check_error = function() {
     }
 };
 
-git_long_description = function() {
-    Pull_request_Long_Description = Pull_request_Long_Description.toString();
-     //Check6: Long Description should be more than 150 characters
-    if (Pull_request_Long_Description.length > 150) {
-        console.log("Success: Long Description is more than min 150 character length");
-    }
-    else {
-      console.log("Error: Long Description is less than min 150 characters of length");
-      check="true";
-      checkarray.push(check);
-    }
-};
-
 git_summary_devops();
 git_summary_length();
 git_long_description();
 git_check_error();
-/*
-Note:
-1.Summary line should start with JIRA Number Format ex: (devops-123, SRE-1234) and line should be less than 50 characters.
-2.Should have a well thought out and meaningful description lines and each line in the description should be less than 72 characters.
-*/
