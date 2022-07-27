@@ -1,9 +1,4 @@
   pipeline {
-  parameters {
-          string(defaultValue: "", description: 'git_branch', name: 'git_branch');
-          string(defaultValue: "test", description: 'nonce', name: 'nonce');
-          string(defaultValue: "2", description: 'feature_count', name: 'feature_count');
-  }
     agent any
   stages {
          stage('Pr-checks-analyzer') {
