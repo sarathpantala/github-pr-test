@@ -23,10 +23,10 @@
               ]
               sh '''
 #!/bin/sh
-chmod 777 ${WORKSPACE}/github-pr-test/git-pr-checks-new.js
+chmod 777 ${WORKSPACE}/github-pr-test/git_pr_check.js.js
 echo "TITLE :: $ghprbPullTitle" 
 echo "COMMENT_BODY :: $ghprbCommentBody"
-node ${WORKSPACE}/github-pr-test/git-pr-checks-new.js "$ghprbPullTitle" "$ghprbCommentBody" "$ghprbPullLongDescription" 
+node ${WORKSPACE}/github-pr-test/git_pr_check.js.js "$ghprbPullTitle" "$ghprbCommentBody" "$ghprbPullLongDescription" 
 
                   
 
