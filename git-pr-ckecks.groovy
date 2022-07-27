@@ -4,7 +4,7 @@
          stage('Pr-checks-analyzer') {
             steps {
             script {
-            currentBuild.displayName = "${GIT_BRANCH}-${BUILD_NUMBER}"
+            currentBuild.displayName = "${ghprbSourceBranch}-${BUILD_NUMBER}"
             }                
             checkout scm: [
                       $class: 'GitSCM',
