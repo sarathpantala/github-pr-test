@@ -9,7 +9,7 @@
          stage('Pr-checks-analyzer') {
             steps {
             script {
-            currentBuild.displayName = "${git_branch}-${BUILD_NUMBER}"
+            currentBuild.displayName = "${GIT_BRANCH}-${BUILD_NUMBER}"
             }                
             checkout scm: [
                       $class: 'GitSCM',
