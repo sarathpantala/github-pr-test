@@ -2,7 +2,7 @@ pipelineJob("git-pr-check-pipeline") {
 	description()
 	keepDependencies(false)
 	definition {
-		Scm {
+		cpsScm {
 """  pipeline {
     agent any
   stages {
