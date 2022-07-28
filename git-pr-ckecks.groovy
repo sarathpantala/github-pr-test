@@ -5,7 +5,13 @@
             steps {
             script {
             currentBuild.displayName = "${ghprbSourceBranch}-${BUILD_NUMBER}"
-            }                
+            }
+            properties([
+              $class: 'GithubProjectProperty',
+              displayName: '',
+              projectUrlStr: 'https://github.com/sarathpantala/sarathrepo/'
+            ])
+              
             checkout scm: [
                       $class: 'GitSCM',
                       branches: [[name: 'master']],
